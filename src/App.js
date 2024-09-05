@@ -1,25 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from "react";
+import Header from "./Header";
+import Form from "./Form";
+import TaskList from "./TaskList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // const arr = [
+    //     {
+    //         id: '1',
+    //         name: 'js',
+    //         completed: true
+    //     },
+    //     {
+    //         id: '2',
+    //         name: 'ts',
+    //         completed: false
+    //     },
+    // ]
+    const [inputText, setInputText] = useState('');
+    const [todos, setTodos] = useState([]);
+    const [editTodo, setEditTodo] = useState(null);
+
+    return (
+        <div className="container">
+            <div className='app-wrapper'>
+                <Header/>
+                <Form
+                    inputText={inputText}
+                    setInputText={setInputText}
+                    todos={todos}
+                    setTodos={setTodos}
+                    editTodo={editTodo}
+                    setEditTodo={setEditTodo}
+                />
+                <TaskList
+                    inputText={inputText}
+                    setInputText={setInputText}
+                    todos={todos}
+                    setTodos={setTodos}
+                    editTodo={editTodo}
+                    setEditTodo={setEditTodo}
+                />
+            </div>
+        </div>
+    );
 }
 
 export default App;
